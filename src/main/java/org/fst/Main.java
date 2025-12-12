@@ -12,9 +12,21 @@ import org.fst.parser.helloParser;
 
 public class Main {
     public static void main(String[] args)  throws IOException{ 
-        // create a CharStream that reads from standard input
-        CharStream cs = CharStreams.fromStream(System.in);
+        
 
+        CharStream cs =null;
+
+        if (args.length>0) {
+                 // create a CharStream that reads from file
+                cs=CharStreams.fromFileName(args[0]);
+                
+        } else {
+                 // create a CharStream that reads from standard input
+                cs = CharStreams.fromStream(System.in);
+        }
+
+
+       
 
                 // create a lexer that feeds off of input CharStream
         helloLexer lexer = new helloLexer(cs);
